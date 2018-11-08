@@ -10,7 +10,7 @@ public class User {
     @GeneratedValue
     @Column(name = "Id")
     private long id;
-    @Column(name = "UserId")
+    @Column(name = "UserId", length = 32, nullable = false)
     private String userId;
     @Column(name = "Name", nullable = false)
     private String name;
