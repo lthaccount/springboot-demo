@@ -70,6 +70,12 @@
             <artifactId>rocketmq-client</artifactId>
             <version>3.2.6</version>
         </dependency>
+
+        <!-- 注解代替get、set、toString方法  简化代码 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
