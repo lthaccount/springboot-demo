@@ -30,6 +30,18 @@ public class RestTemplateFactory implements FactoryBean<RestTemplate>, Initializ
     @Override
     public RestTemplate getObject() throws Exception {
         return this.restTemplate;
+//        return new RestTemplate();
+    }
+
+    /**
+     * 申明getObject()方法获取到的bean是否为单例
+     * 当return true时，getObject()方法返回的bean会加入单例缓存池，即使是new出来的对象，也是单例的
+     * 不重写此方法，默认为单例
+     * @return
+     */
+    @Override
+    public boolean isSingleton() {
+        return true;
     }
 
     @Nullable
