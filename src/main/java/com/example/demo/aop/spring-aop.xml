@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!-- 先配置bean到容器 -->
+    <bean id="chinese" class="com.example.demo.aop.Chinese"></bean>
+    <bean id="american" class="com.example.demo.aop.American"></bean>
+    <bean id="aspectTest" class="com.example.demo.aop.AspectTest"></bean>
+
+    <!-- aop config -->
+    <aop:config>
+        <!-- 切入点 -->
+        <aop:pointcut expression="execution(* com.example.demo.aop.*.eat(..))" id="eat"></aop:pointcut>
+        <aop:pointcut expression="execution(* com.example.demo.aop.*.sleep(..))" id="sleep"></aop:pointcut>
+
+        <!-- 切入详情 -->
+        <aop:aspect id="aspecter" ref="aspectTest">   <!-- 指定切入者的bean -->
+            <aop:before method="beforEat" pointcut-ref="eat"></aop:before> <!-- 指定切入点和切入的方法，执行顺序为befor -->
+            <aop:before method="beforSleep" pointcut-ref="sleep"></aop:before> <!-- 指定切入点和切入的方法，执行顺序为befor -->
+            <aop:after method="afterEat" pointcut-ref="eat"></aop:after> <!-- 指定切入点和切入的方法，执行顺序为after -->
+        </aop:aspect>
+    </aop:config>
+</beans>
